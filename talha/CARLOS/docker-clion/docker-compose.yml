@@ -1,0 +1,27 @@
+
+version: '2'
+services:
+  ros2-tf:
+    container_name: shengyao-clion-debug
+    privileged: true
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: shengyao-ros2-tf:debug #name the image after building
+    volumes:
+      - ../colcon_ws:/docker-ros/ws
+      - ./entrypoint.sh:/entrypoint.sh
+    networks:
+      - "software-prototyping_default"
+    ports:
+      - "8033:22"
+    cap_add:
+      - SYS_PTRACE #allow gdb to attach the running process in the container
+    #security_opt:
+    #  - seccomp:unconfined
+      
+networks:
+  software-prototyping_default:
+    external: true #declare that the network "software-prototyping_default" is external
+    
+

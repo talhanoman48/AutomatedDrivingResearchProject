@@ -1,0 +1,7 @@
+image_segmentation_r2:
+  ros__parameters:
+    #frozen_graph: models/Unet_512_1024_single_dataset_batchsize8_epoch200.pb
+    frozen_graph: models/Talha_model2.pb
+    xml_conversion_file: models/convert_cityscapes_to_ika_reduced.xml
+    resize_width: 1024
+    resize_height: 512
